@@ -36,7 +36,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    background: #f0cc00;
+    background: #ffffff;
     color: #000000;
     font-family: 'Kanit', sans-serif;
     font-weight: 700;
@@ -137,7 +137,7 @@
 
   body {
     font-family: 'Kanit', sans-serif;
-    background: url('totto ramen.png') no-repeat center center fixed;
+    background: url('IMG/totto ramen.png') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     line-height: 1.6;
@@ -151,7 +151,7 @@
     position: fixed;
     top: 40px; /* height of .nyc-banner */
     width: 100%;
-    background: #ffffff;
+    background: #f0cc00;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -200,8 +200,8 @@
   }
 
   .nav-dropdown-content a:hover {
-    background: #E2CAAE;
-    color: #fff;
+    background: #f0cc00;
+    color: #000000;
   }
 
   .nav-dropdown:hover .nav-dropdown-content {
@@ -231,19 +231,19 @@
   }
 
   .btn {
-  background-color: #f0cc00;
-  color: #000000;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 1.2rem;
-  padding: 1rem 2.2rem;
-  border-radius: 4px;
-  border: none;
-  box-shadow: none;
-  transition: background-color 0.3s, color 0.3s, transform 0.2s;
-  display: inline-block;
-}
+    background-color: #f0cc00;
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    padding: 1rem 2.2rem;
+    border-radius: 4px;
+    border: none;
+    box-shadow: none;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    display: inline-block;
+  }
 
   .btn:hover {
     background-color: #ffffff;
@@ -538,43 +538,46 @@ section.intro p {
 
   .faq-item {
     margin-bottom: 1.2rem;
-    border-bottom: 1px solid #e7e3e3;
+    border-bottom: 1px solid #000000;
     overflow: hidden;
   }
 
   .faq-question {
-  background: none;
-  color: hsl(0, 0%, 0%);
-  font-size: 1.18rem;
-  font-weight: 700;
-  border: none;
-  width: 100%;
-  text-align: left;
-  padding: 1.1rem 2.2rem 1.1rem 0.7rem;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  position: relative;
-  outline: none;
-  display: flex;
-  align-items: center;
-}
-.faq-question::after {
-  content: '\25BC';
-  font-size: 1.1rem;
-  color: #000000;
-  margin-left: auto;
-  transition: transform 0.35s cubic-bezier(.4,2,.6,1), color 0.2s;
-  transform: rotate(0deg);
-}
-.faq-question.active::after {
-  transform: rotate(-180deg);
-  color: #111;
-}
-.faq-question:hover,
-.faq-question.active {
-  background: #fff3ed;
-  color: #f0cc00;
-}
+    background: none;
+    color: hsl(0, 0%, 0%);
+    font-size: 1.18rem;
+    font-weight: 700;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 1.1rem 2.2rem 1.1rem 0.7rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    position: relative;
+    outline: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .faq-question::after {
+    content: '\25BC';
+    font-size: 1.1rem;
+    color: #000000;
+    margin-left: auto;
+    transition: transform 0.35s cubic-bezier(.4,2,.6,1), color 0.2s;
+    transform: rotate(0deg);
+  }
+
+  .faq-question.active::after {
+    transform: rotate(-180deg);
+    color: #111;
+  }
+
+  .faq-question:hover,
+  .faq-question.active {
+    background: #fff3ed;
+    color: #f0cc00;
+  }
 
   .faq-answer {
     max-height: 0;
@@ -649,13 +652,13 @@ nav a {
 }
 
 nav a:hover {
-  color: #f0cc00; /* hover color */
+  color: #ffffff; /* hover color */
 }
 
 nav a.active {
   border-bottom: 2px solid #fff;
   padding-bottom: 2px;
-  color: #f0cc00; /* optional: highlight active link */
+  color: #ffffff; /* optional: highlight active link */
 }
 
 .signature-btn {
