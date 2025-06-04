@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu - Totto Ramen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+    --bg: #000;
+    --text: #fff;
+    --accent: #071013;
+    --gray: #ccc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: url('IMG/totto ramen.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .nyc-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      background: #000000;
+      color: #fff;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 0.7rem 0 0.6rem 0;
+      line-height: 1.1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      z-index: 1101;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+    }
+    .nyc-banner .close-banner {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0 8px;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      z-index: 1200;
+    }
+    .nyc-banner .close-banner:hover {
+      opacity: 1;
+    }
+    body.banner-closed header {
+      top: 0;
+    }
+    body.banner-closed main {
+      padding-top: 80px;
+    }
+
+    header {
+      position: fixed;
+      top: 40px; /* height of .nyc-banner */
+      width: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      position: relative;
+    }
+
+    nav a {
+      color: var(--accent);
+      font-weight: 600;
+      position: relative;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #AAAAAA;
+    }
+
+    .menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #ffffff;
+  }
+
+    main {
+      padding-top: 148px; /* .nyc-banner + header height */
+    }
+
+    .intro-description {
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.3rem;
+      color: white;
+    }
+
+    .menu-gallery {
+      background-color: #ffffff;
+      color: black;
+      margin-top: 4rem;
+      padding: 4rem 2rem;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .menu-item-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      background: #e9e9e9;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .menu-item-box img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.35s cubic-bezier(.4,2,.6,1), filter 0.35s cubic-bezier(.4,2,.6,1);
+    }
+
+    .menu-item-box img:hover {
+      transform: scale(1.08) rotate(-1.5deg);
+      box-shadow: 0 16px 48px rgba(238,75,43,0.22), 0 8px 32px rgba(0,0,0,0.18);
+      filter: brightness(1.08) saturate(1.15);
+      z-index: 2;
+    }
+
+    .menu-description {
+      flex: 1;
+      text-align: left;
+      padding: 0 1rem 1rem 1rem;
+    }
+
+    .menu-description h3 {
+      margin-bottom: 0.5rem;
+      color: #f92900;
+      text-align: left;
+    }
+
+    .menu-description p {
+      font-size: 1.05rem;
+      color: #2a2727;
+      text-align: left;
+      margin: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #000000;
+      background: #ffffff;
+    }
+
+    .footer-logo img {
+      height: 40px;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #EE4B2B;
+    width: 100%;
+    display: none;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  nav a {
+    color:#fff;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    color: #fff;
+  }
+
+  .menu-item-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .menu-item-box img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+     }
+  }
+
+    .overlay {
+    position: fixed;
+     top: 0; left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0,0,0,0.65);
+     z-index: -1;
+    }
+
+    .clickable {
+  text-align: center;
+  margin: 3rem 0 2rem;
+}
+
+.btn-link {
+  display: inline-block;
+  margin: 0.5rem 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #000000;
+  color: #ffffff; 
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-link:hover {
+  background-color: #EE4B2B;
+  transform: scale(1.05);
+}
+
+.insta-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.6rem;
+}
+
+nav a {
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #EE4B2B; /* hover color */
+}
+
+nav a.active {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 2px;
+  color: #EE4B2B; /* optional: highlight active link */
+}
+
+.choose-location-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2.2rem;
+      background-color: #EE4B2B;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      box-shadow: none;
+      transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    }
+    .choose-location-btn:hover {
+      background-color: #000;
+      color: #fff;
+      transform: scale(1.04);
+    }
+    .choose-location-btn:active {
+      background-color: #222;
+      color: #fff;
+    }
+
+    .nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 2.2rem;
+  left: 0;
+  background: #fff;
+  min-width: 220px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+  border-radius: 8px;
+  z-index: 1001;
+  padding: 0.7rem 0.5rem;
+}
+
+.nav-dropdown-content a {
+  display: block;
+  color: #111;
+  font-weight: 300;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+  font-family: 'Kanit', sans-serif;
+}
+
+.nav-dropdown-content a:hover {
+  background: #EE4B2B;
+  color: #fff;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .nav-dropdown-content {
+    position: static;
+    box-shadow: none;
+    background: #fff;
+    min-width: 0;
+    padding: 0;
+  }
+  .nav-dropdown-content a {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <div class="nyc-banner">
+    BORN AND RAISED IN NYC  EST.2010
+    <button class="close-banner" aria-label="Close banner">&times;</button>
+  </div>
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="https://images.squarespace-cdn.com/content/v1/601812300e957f6685ba7026/1612885493280-4MX1IZG5P2RBC8VAK8FK/Totto-Ramen-Logo-horiz-red-hat.png" alt="Totto Logo">
+      </a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <nav id="nav-links">
+      <a href="Menu.html" class="active">Menu</a>
+      <a href="About.html">About</a>
+      <div class="nav-dropdown">
+    <a href="#" style="cursor:pointer;">Locations</a>
+    <div class="nav-dropdown-content">
+      <a href="#">ASSEMBLY ROW – SOMERVILLE</a>
+      <a href="#">SOUTH BAY – BOSTON</a>
+      <a href="#">ZHONGXIAO – TAIPEI</a>
+      <a href="#">ZHONGSHAN – TAIPEI</a>
+      <a href="#">SIMON – TAIPEI</a>
+      <a href="#">LOCATIONS</a>
+    </div>
+  </div>
+      <a href="">Franchise</a>
+      <a href="">Contact</a>
+      <a href="https://www.instagram.com/totto_ramen" target="_blank" class="#">
+  <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="insta-icon">
+</a>
+    </nav>
+  </header>
+
+  <div class="overlay"></div>
+
+  <main>
+    <div class="intro-description">
+      <h1>OUR SIGNATURE</span> DISHES</h1>
+      <p>Each of our signature dishes at Totto Ramen is thoughtfully crafted, highlighting the rich flavors of authentic Japanese ramen with our unique culinary twist. From savory broths simmered to perfection, to tender noodles and fresh ingredients, every bowl tells a delicious story.</p>
+      <a href="index.html#locations-direct" class="choose-location-btn">CHOOSE LOCATION</a>
+    </div>
+
+    <section class="menu-gallery">
+      <div class="menu-items">
+
+        <div class="menu-item-box">
+          <img src="IMG/Takoyaki.jpg" alt="Takoyaki">
+          <div class="menu-description">
+            <h3>Takoyaki</h3>
+            <p>Japanese-style deep fried octopus cakes with our house mayo and kagome sauce, garnished with fish flakes and pickled ginger.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Karaage.png" alt="Karaage Ramen">
+          <div class="menu-description">
+            <h3>Karaage Ramen</h3>
+            <p>House made fried chicken in our savory chicken broth w/ wavy noodles topped w/ scallion, onion.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Gyoza.jpg" alt="Gyoza">
+          <div class="menu-description">
+            <h3>Gyoza</h3>
+            <p>Served with house dipping sauce.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/SpicyRamen.png" alt="Spicy Ramen">
+          <div class="menu-description">
+            <h3>Spicy Ramen (Best Seller)</h3>
+            <p>Rayu, our original spicy sesame oil with slabs of char-siu layered atop wavy noodles with scallion, bean sprouts.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Chicken+Bun.jpg" alt="Chicken Bun">
+          <div class="menu-description">
+            <h3>Chicken Bun</h3>
+            <p>Spicy fried chicken patty, lettuce, w/ yuzu mayo.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Paitan+Ramen.png" alt="Paitan Ramen">
+          <div class="menu-description">
+            <h3>Paitan Ramen (Best Seller)</h3>
+            <p>Loaded w/ char siu in our savory broth w/ wavy noodles topped with scallion, shredded pork, onion.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Pork+Bun.jpg" alt="Pork Bun">
+          <div class="menu-description">
+            <h3>Pork Bun</h3>
+            <p>Tender char siu pork, lettuce, w/ yuzu mayo.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Vegetable+Ramen.png" alt="Veggie Ramen">
+          <div class="menu-description">
+            <h3>Veggie Ramen</h3>
+            <p>Konbu seaweed and shiitake mushroom based broth topped w/ seasonal veggies, bell peppers, seasoned avocado and yuzu paste.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Fried+Chicken.jpg" alt="Fried Chicken">
+          <div class="menu-description">
+            <h3>Fried Chicken</h3>
+            <p>Spicy marinated fried chicken tenders served over a bed of lettuce topped with yuzu mayo.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Miso+Paitan.png" alt="Miso Ramen">
+          <div class="menu-description">
+            <h3>Misu Ramen</h3>
+            <p>scoop of house made miso paste served with wavy noodles, char-siu, half a seasoned soft boiled egg, scallion, bean sprouts, & onion.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Tuna+Don.jpg" alt="Tuna Don">
+          <div class="menu-description">
+            <h3>Tuna Don</h3>
+            <p>Chopped tuna combined with spicy mayo over steamed rice, topped with refreshing cucumber, masago, lettuce and scallion.</p>
+          </div>
+        </div>
+
+        <div class="menu-item-box">
+          <img src="IMG/Shrimp+Ramen.png" alt="Shrimp Ramen">
+          <div class="menu-description">
+            <h3>Shrimp Ramen</h3>
+            <p>Housemade Shrimp paste in our broth w/ wavy noodles, half soft boiled egg, scallion, bean sprouts, onion, & shrimp. *contains peanuts and cashews*.</p>
+          </div>
+        </div>
+
+      </div>
+           <div class="clickable">
+  <a href="" target="_blank" class="btn-link">ORDER NOW SOMERVILLE</a>
+  <a href="" target="_blank" class="btn-link">ORDER NOW BOSTON</a>
+</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/601812300e957f6685ba7026/1612885493280-4MX1IZG5P2RBC8VAK8FK/Totto-Ramen-Logo-horiz-red-hat.png" alt="Totto Logo">
+    </div>
+    <p>&copy; 2025 Totto Ramen. All rights reserved.</p>
+    <div class="connect-social">
+  <a href="https://www.instagram.com/totto_ramen" target="_blank" class="insta-link">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="insta-icon">
+  </a>
+</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+    // Banner close button functionality
+    document.querySelector('.close-banner').addEventListener('click', function() {
+      var banner = document.querySelector('.nyc-banner');
+      if (banner) banner.style.display = 'none';
+      document.body.classList.add('banner-closed');
+    });
+  </script>
+</body>
+</html>
